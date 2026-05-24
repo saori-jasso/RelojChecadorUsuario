@@ -1,3 +1,4 @@
+com\mycompany\checadorproyecto\bd\ConexionBD.class
 com\mycompany\checadorproyecto\main\ChecadorProyecto.class
 com\mycompany\checadorproyecto\ventanas\RoundedTextField.class
 com\mycompany\checadorproyecto\ventanas\PanelDecorativo.class
