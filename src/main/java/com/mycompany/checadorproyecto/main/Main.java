@@ -17,6 +17,8 @@ public class Main {
         SwingUtilities.invokeLater(() -> {//ejecuta la ventana en el hilo de swing 
             new VentanaChecador().setVisible(true);
         });
+        
+        
 
     }
 }

@@ -22,8 +22,11 @@ public class VentanaChecador extends JFrame {
     //campos de texto 
     private RoundedTextField txtID;
     private RoundedTextField txtFecha;
+    private RoundedTextField txtMatricula;
+    private javax.swing.JButton btnConfirmar;
     private RoundedTextField txtHoraRegistrada;
     private JLabel lblCheck;
+    
 
     public VentanaChecador() {//el contructor
 
@@ -81,7 +84,7 @@ public class VentanaChecador extends JFrame {
         // TEXTFIELDS de la derecha 
         txtID = new RoundedTextField();
         txtID.setText("");//Empieza vacío
-        txtID.setEditable(false);
+        txtID.setEditable(true);
         txtID.setBounds(370, 140, 110, 35);
 
         panel.add(txtID);
@@ -122,6 +125,16 @@ public class VentanaChecador extends JFrame {
         lblCheck.setBounds(385, 295, 60, 60);
 
         panel.add(lblCheck);
+        
+      
+
+        btnConfirmar = new javax.swing.JButton("Confirmar");
+        btnConfirmar.setBounds(240, 410, 270, 40);
+        btnConfirmar.setBackground(new Color(132, 195, 65));
+        btnConfirmar.setForeground(Color.WHITE);
+        btnConfirmar.setFont(new Font("Arial", Font.BOLD, 16));
+        btnConfirmar.setFocusPainted(false);
+        panel.add(btnConfirmar);
 
     }
 
@@ -142,10 +155,19 @@ public class VentanaChecador extends JFrame {
 
     }
 
-    private void iniciarReloj() {//crear e iniciar el reloj
+    private void iniciarReloj() {
+    RelojDigital reloj = new RelojDigital();
+    reloj.iniciar(lblHora, txtFecha, txtHoraRegistrada);
+    reloj.iniciarLector(txtID, txtFecha, txtHoraRegistrada, lblCheck);
 
-        RelojDigital reloj = new RelojDigital();
-        reloj.iniciar( lblHora,txtFecha,txtHoraRegistrada);
-        reloj.iniciarLector(txtID,txtFecha,txtHoraRegistrada,lblCheck);//Prueba 1 con código, captura y BD
-    }
+    btnConfirmar.addActionListener(e -> {
+        reloj.registrarPorMatricula(
+            txtID.getText(),
+            txtID,
+            txtFecha,
+            txtHoraRegistrada,
+            lblCheck
+        );
+    });
+}
 }
