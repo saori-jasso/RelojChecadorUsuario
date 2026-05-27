@@ -10,12 +10,35 @@
         <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>com.mycompany.checadorproyecto.ChecadorProyecto</exec.mainClass>
     </properties>
-    
     <dependencies>
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.digitalpersona</groupId>
+            <artifactId>dpotapi</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.digitalpersona</groupId>
+            <artifactId>dpotjni</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.digitalpersona</groupId>
+            <artifactId>dpfpenrollment</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.digitalpersona</groupId>
+            <artifactId>dpfpverification</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 </project>

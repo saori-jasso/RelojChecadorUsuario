@@ -1,4 +1,8 @@
 com\mycompany\checadorproyecto\bd\ConexionBD.class
-com\mycompany\checadorproyecto\main\ChecadorProyecto.class
+com\mycompany\checadorproyecto\util\RelojDigital.class
 com\mycompany\checadorproyecto\ventanas\RoundedTextField.class
+com\mycompany\checadorproyecto\util\RelojDigital$2.class
+com\mycompany\checadorproyecto\ventanas\VentanaChecador.class
+com\mycompany\checadorproyecto\util\RelojDigital$1.class
+com\mycompany\checadorproyecto\main\Main.class
 com\mycompany\checadorproyecto\ventanas\PanelDecorativo.class
