@@ -1,29 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.checadorproyecto.bd;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
-/**
- *
- * @author soporte
- */
+
 public class ConexionBD {
-    private static final String URL = "jdbc:mysql://relojchecador.c3okscuymwtz.us-east-2.rds.amazonaws.com:3306/checador";
-    private static final String USUARIO = "admin";
-    private static final String CONTRASENA = "password123"; 
+    
+    // ¡CRÍTICO!: Aquí pones la IP de tu máquina Servidora (la que tiene XAMPP)
+    // Recuerda cambiar este número mañana por el que te asigne el Access Point físico
+    private static final String URL = "jdbc:mysql://192.168.0.182:3306/checador?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    
+    // Usuario por defecto de XAMPP
+    private static final String USUARIO = "root"; 
+    
+    // Contraseña por defecto de XAMPP (vacía, sin espacios)
+    private static final String PASSWORD = ""; 
 
     public static Connection conectar() {
         Connection conexion = null;
         try {
-            conexion = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
+            System.out.println("¡Conexión remota exitosa al MySQL del Servidor!");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error: No se encontró el driver de MySQL: " + e.getMessage());
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al conectar usuarios con AWS: " + e.getMessage());
+            System.out.println("Error de conexión en el cliente: " + e.getMessage());
         }
         return conexion;
     }
-    
 }

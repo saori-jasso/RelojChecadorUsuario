@@ -1,3 +1,6 @@
+/* TODA ESTA LÓGICA SE PASO A ADMIN
+
+
 package com.mycompany.checadorproyecto.util;
 
 import java.sql.*;
@@ -233,4 +236,4 @@ public class RegistroEntradaSalida {
             ex.printStackTrace();
         }
     }
-}
+}*/

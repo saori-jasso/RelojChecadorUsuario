@@ -115,7 +115,7 @@ public class LectorHuella {
     }
 
     // =========================================
-    // BUSCAR HUELLA EN BD
+    // BUSCAR HUELLA EN BD Y ENVIAR POR SOCKETS
     // =========================================
     private boolean buscarHuellaEnBD(
         DPFPFeatureSet features,
@@ -124,6 +124,7 @@ public class LectorHuella {
         JTextField txtHoraRegistrada,
         JLabel lblCheck
     ) {
+        // Hacemos el SELECT a la IP del Servidor para descargar las huellas y compararlas
         String sql = "SELECT matricula, huella FROM Empleados";
 
         try (Connection conexion = ConexionBD.conectar();
@@ -141,9 +142,22 @@ public class LectorHuella {
                         verificador.verify(features, template);
 
                 if (resultado.isVerified()) {
-                    registroChecada.registrarChecada(conexion, matricula);
-                    interfaz.actualizarInterfazCorrecta(
-                            matricula, txtID, txtFecha, txtHoraRegistrada, lblCheck);
+                    
+                    System.out.println("Huella reconocida. Enviando al Servidor por Sockets...");
+                    
+                    // ¡AQUÍ ESTÁ LA MAGIA DE LA CONCURRENCIA!
+                    // En lugar de hacer el insert directo a la base de datos,
+                    // enviamos la matrícula reconocida a nuestra clase RegistroChecada
+                    // para que ella la mande por Sockets hacia el Servidor.
+                    registroChecada.registrarPorMatricula(
+                            String.valueOf(matricula), 
+                            txtID, 
+                            txtFecha, 
+                            txtHoraRegistrada, 
+                            lblCheck, 
+                            interfaz
+                    );
+                    
                     return true;
                 }
             }

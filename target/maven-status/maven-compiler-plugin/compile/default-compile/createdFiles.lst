@@ -5,7 +5,6 @@ com\mycompany\checadorproyecto\util\LectorHuella$1.class
 com\mycompany\checadorproyecto\util\RelojDigital.class
 com\mycompany\checadorproyecto\ventanas\RoundedTextField.class
 com\mycompany\checadorproyecto\ventanas\VentanaChecador.class
-com\mycompany\checadorproyecto\util\RegistroEntradaSalida.class
 com\mycompany\checadorproyecto\util\InterfazChecador.class
 com\mycompany\checadorproyecto\main\Main.class
 com\mycompany\checadorproyecto\util\LectorHuella.class
